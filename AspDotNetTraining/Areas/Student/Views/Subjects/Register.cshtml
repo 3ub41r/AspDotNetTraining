@@ -1,6 +1,9 @@
-﻿@{
-    ViewBag.Title = "Register";
+﻿@using AspDotNetTraining.Models
+@{
+    ViewBag.Title = "Index";
 }
 
-<h2>Register</h2>
+<h2>Index</h2>
+
+@(((Student)ViewData["Student"]).Name)
 

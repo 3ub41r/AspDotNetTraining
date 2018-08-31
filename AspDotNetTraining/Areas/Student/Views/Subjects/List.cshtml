@@ -1,0 +1,16 @@
+﻿@model AspDotNetTraining.Models.Student
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Payments made by @Model.Name</h2>
+
+<ul>
+    @foreach (var payment in Model.Payments)
+    {
+        var largeAmount = payment.Amount > 100 ? "text-danger" : null;
+
+        <li class="@largeAmount">@payment.Amount</li>
+    }
+</ul>
+
