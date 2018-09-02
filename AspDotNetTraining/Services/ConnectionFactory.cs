@@ -8,12 +8,23 @@ using System.Web;
 
 namespace AspDotNetTraining.Services
 {
-    public static class ConnectionFactory
+    public class ConnectionFactory
     {
-        public static IDbConnection GetConnection(string connectionKey = "Database")
+        private readonly string _connectionString;
+        
+        public ConnectionFactory(string connectionString)
         {
-            var connectionString = ConfigurationManager.ConnectionStrings[connectionKey].ToString();
-            return new SqlConnection(connectionString);
+            this._connectionString = connectionString;
+        }
+
+        public ConnectionFactory()
+        {
+            _connectionString = ConfigurationManager.ConnectionStrings["Database"].ToString();
+        }
+
+        public IDbConnection GetConnection()
+        {
+            return new SqlConnection(_connectionString);
         }
     }
 }
