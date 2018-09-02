@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AspDotNetTraining.Models;
+using AspDotNetTraining.Services;
 using Dapper;
 
 namespace AspDotNetTraining.Controllers
@@ -28,6 +29,21 @@ namespace AspDotNetTraining.Controllers
         public ActionResult New()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Student student)
+        {
+            using (var c = ConnectionFactory.GetConnection())
+            {
+                const string sql = @"
+                INSERT INTO Student (Name, IcNumber, MatricNumber)
+                VALUES (@Name, @IcNumber, @MatricNumber)";
+
+                c.Execute(sql, student);
+
+                return RedirectToAction("Index");
+            }
         }
     }
 }
