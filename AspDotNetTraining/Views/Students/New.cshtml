@@ -1,0 +1,25 @@
+﻿@model AspDotNetTraining.Models.Student
+@{
+    ViewBag.Title = "New Student";
+}
+
+<h2>New Student</h2>
+
+@using (Html.BeginForm("Create", "Students"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "E.g. Your Name Please" })
+    </div>
+    <div class="form-group">
+        <label for="IcNumber">IC Number</label>
+        @Html.TextBoxFor(m => m.IcNumber, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.MatricNumber)
+        @Html.TextBoxFor(m => m.MatricNumber, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send</button>
+}
+
