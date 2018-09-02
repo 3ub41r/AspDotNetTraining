@@ -16,7 +16,9 @@
         @foreach (var student in Model)
         {
             <tr>
-                <td>@student.Name</td>
+                <td>
+                    @Html.ActionLink(student.Name, "Edit", new { id = student.Id })
+                </td>
                 <td>@student.IcNumber</td>
             </tr>
         }

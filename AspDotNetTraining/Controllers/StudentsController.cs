@@ -34,7 +34,7 @@ namespace AspDotNetTraining.Controllers
         [HttpPost]
         public ActionResult Create(Student student)
         {
-            using (var c = ConnectionFactory.GetConnection())
+            using (var c = new ConnectionFactory().GetConnection())
             {
                 const string sql = @"
                 INSERT INTO Student (Name, IcNumber, MatricNumber)
@@ -44,6 +44,22 @@ namespace AspDotNetTraining.Controllers
 
                 return RedirectToAction("Index");
             }
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var student = new StudentService().Find(id);
+
+            if (student == null) return HttpNotFound();
+
+            return View("New", student);
+        }
+
+        public ActionResult Update(Student student)
+        {
+            new StudentService().Update(student);
+
+            return RedirectToAction("Index");
         }
     }
 }
