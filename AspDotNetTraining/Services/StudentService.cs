@@ -40,5 +40,21 @@ namespace AspDotNetTraining.Services
                 c.Execute(sql, student);
             }
         }
+
+        /// <summary>
+        /// Delete student by Id.
+        /// </summary>
+        /// <param name="id"></param>
+        public void Delete(int id)
+        {
+            const string sql = @"
+            DELETE FROM Student
+            WHERE Id = @Id";
+
+            using (var c = new ConnectionFactory().GetConnection())
+            {
+                c.Execute(sql, new { Id = id });
+            }
+        }
     }
 }

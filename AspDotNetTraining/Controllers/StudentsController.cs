@@ -28,7 +28,7 @@ namespace AspDotNetTraining.Controllers
 
         public ActionResult New()
         {
-            return View();
+            return View(new Student());
         }
 
         [HttpPost]
@@ -58,6 +58,13 @@ namespace AspDotNetTraining.Controllers
         public ActionResult Update(Student student)
         {
             new StudentService().Update(student);
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            new StudentService().Delete(id);
 
             return RedirectToAction("Index");
         }

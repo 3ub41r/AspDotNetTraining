@@ -10,6 +10,7 @@
         <tr>
             <th>Name</th>
             <th>IC Number</th>
+            <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -20,6 +21,17 @@
                     @Html.ActionLink(student.Name, "Edit", new { id = student.Id })
                 </td>
                 <td>@student.IcNumber</td>
+                <td>
+                    @using (Html.BeginForm(
+                        "Delete", 
+                        "Students", 
+                        new { id = student.Id }, 
+                        FormMethod.Post, 
+                        new { onsubmit = "return confirm(\"You are about to delete this record.\\nAre you sure?\");" }))
+                    {
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    }
+                </td>
             </tr>
         }
     </tbody>
