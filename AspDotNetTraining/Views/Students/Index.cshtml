@@ -27,7 +27,7 @@
                         "Students", 
                         new { id = student.Id }, 
                         FormMethod.Post, 
-                        new { onsubmit = "return confirm(\"You are about to delete this record.\\nAre you sure?\");" }))
+                        new { onsubmit = "return confirm(\"You are about to delete " + student.Name + "'s record.\\nAre you sure?\");" }))
                     {
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     }
