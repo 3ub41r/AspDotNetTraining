@@ -34,6 +34,11 @@ namespace AspDotNetTraining.Controllers
         [HttpPost]
         public ActionResult Create(Student student)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("New", student);
+            }
+
             using (var c = new ConnectionFactory().GetConnection())
             {
                 const string sql = @"
