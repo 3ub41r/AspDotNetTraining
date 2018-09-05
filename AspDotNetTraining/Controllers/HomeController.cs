@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AspDotNetTraining.Models;
+using AspDotNetTraining.ViewModels;
 
 namespace AspDotNetTraining.Controllers
 {
@@ -36,6 +38,27 @@ namespace AspDotNetTraining.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Student()
+        {
+            var viewModel = new HomeStudentViewModel
+            {
+                Student = new Student
+                {
+                    Name = "Zubair",
+                    IcNumber = "121212121212",
+                    MatricNumber = "A1234567890"
+                },
+                Payments = new List<Payment>
+                {
+                    new Payment { Amount = 100 },
+                    new Payment { Amount = 200 },
+                    new Payment { Amount = 300 }
+                }
+            };
+
+            return View(viewModel);
         }
     }
 }

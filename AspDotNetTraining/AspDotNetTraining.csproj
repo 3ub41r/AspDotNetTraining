@@ -192,6 +192,7 @@
     <Compile Include="Services\ConnectionFactory.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="Validators\StudentValidator.cs" />
+    <Compile Include="ViewModels\HomeStudentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\AspDotNetTraining.mdf" />
@@ -245,6 +246,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Students\Index.cshtml" />
     <Content Include="Views\Students\New.cshtml" />
+    <Content Include="Views\Home\Student.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Staff\Controllers\" />
